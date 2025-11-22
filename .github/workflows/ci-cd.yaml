@@ -1,20 +1,35 @@
 name: Pipeline-git-github-actions
 
-"on":
-   pull_request:
+on:
+  pull_request:
     branches:
       - main
       - develop
       - staging
-      - feature/*
-      - hotfix/*
-      - bugfix/*
-      - release/*
+      - 'feature/*'
+      - 'hotfix/*'
+      - 'bugfix/*'
+      - 'release/*'
 
+# O workflow só roda no PR se arquivos nestas pastas forem alterados
     paths:
-      - 'docs/**
-      - 'scripts/*.sh'
+      - 'docs/**'
+      - 'scripts/*.sh' 
 
-    push:
-      branches:
-        - main
+# O push deve estar alinhado com o pull_request (na margem esquerda, abaixo de 'on')
+  push:
+    branches:
+      - main
+
+jobs:
+  build-e-validacao:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Codigo
+        uses: actions/checkout@v4
+
+      - name: Mensagem de Boas Vindas
+        run: echo "O workflow foi iniciado com sucesso!"
+
+      - name: Listar Arquivos
+        run: ls -R
