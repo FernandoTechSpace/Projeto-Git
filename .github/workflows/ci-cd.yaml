@@ -1,0 +1,20 @@
+name: Pipeline-git-github-actions
+
+"on":
+   pull_request:
+    branches:
+      - main
+      - develop
+      - staging
+      - feature/*
+      - hotfix/*
+      - bugfix/*
+      - release/*
+
+    paths:
+      - 'docs/**
+      - 'scripts/*.sh'
+
+    push:
+      branches:
+        - main
