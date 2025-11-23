@@ -16,7 +16,7 @@ on:
       - 'docs/**'
       - 'scripts/*.sh' 
 
-# O push deve estar alinhado com o pull_request (na margem esquerda, abaixo de 'on')
+
   push:
     branches:
       - main
